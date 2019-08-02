@@ -12,6 +12,7 @@ class TeachersViewController: UIViewController {
 
     var currentRows: String?
     
+    // Массив всех предметов во всех семестрах
     let oneSemestr = ["Алгебра и геометрия", "Введение в программную инженерию", "Иностранный язык",
                       "Информатика", "История", "Математический анализ",
                       "Процедурное программирование","Физика", "Физическая культура и спорт"]
@@ -57,18 +58,22 @@ class TeachersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Подпись на delegate и dataSource
         detailTable.delegate = self
         detailTable.dataSource = self
     }
     
 }
 
+//MARK: - TableView DataSource
 extension TeachersViewController: UITableViewDataSource, UITableViewDelegate {
     
+    // Устанавливается высота строки 90
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
+    // Проверяется сколько дожно быть строк в секции после выбора строки "семестр"
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if currentRows == "1 семестр" {
             return oneSemestr.count
@@ -91,9 +96,11 @@ extension TeachersViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    // Привязка и редактирование ячейка
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
         
+        // Проверяется что должно быть написанно в каждой по счёту строке
         if currentRows == "1 семестр" {
             cell.textLabel?.text = oneSemestr[indexPath.row]
         } else if currentRows == "2 семестр" {
@@ -112,6 +119,7 @@ extension TeachersViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.text = eightSemestr[indexPath.row]
         }
         
+        // Автоматический перенос текста
         cell.textLabel?.numberOfLines = 0
         
         return cell
