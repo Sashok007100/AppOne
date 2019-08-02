@@ -64,8 +64,9 @@ class TeachersViewController: UIViewController {
 }
 
 extension TeachersViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,6 +111,8 @@ extension TeachersViewController: UITableViewDataSource, UITableViewDelegate {
         } else if currentRows == "8 семестр" {
             cell.textLabel?.text = eightSemestr[indexPath.row]
         }
+        
+        cell.textLabel?.numberOfLines = 0
         
         return cell
     }
