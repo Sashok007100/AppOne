@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var semester = ["1 семестр", "2 семестр", "3 семестр", "4 семестр", "5 семестр", "6 семестр", "7 семестр", "8 семестр"]
+    private var semester = ["1 семестр", "2 семестр", "3 семестр", "4 семестр", "5 семестр", "6 семестр", "7 семестр", "8 семестр"]
     
     @IBOutlet weak var teachersTableView: UITableView!
     
